@@ -11,7 +11,7 @@ function MainPage() {
 
   return (
     <div>
-      {userinfo?.name !== "" ? (
+      {userinfo.name !== "" ? (
         <BrowserRouter>
           <Routes>
             <Route path="/homePage" element={<HomePage />} />

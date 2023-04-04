@@ -4,6 +4,7 @@ import EventNoteIcon from "@mui/icons-material/EventNote";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useSelector } from "react-redux";
+import userinfo from "../store/userinfo";
 
 function Navbar() {
   // hook usestate useefect
@@ -44,7 +45,7 @@ function Navbar() {
       </div>
       {/* center */}
       <h1 className=" font-serif font-bold text-2xl md:text-3xl lg:text-4xl">
-        YOUR TODO LIST
+        {userinfo.name.toUpperCase()}'s' TODO LIST
       </h1>
       {/* right */}
       <div>

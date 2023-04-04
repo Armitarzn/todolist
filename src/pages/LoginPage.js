@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import BasicTextFields from "../Components/BasicTextFields";
 import BasicButtons from "../Components/BasicButton";
 import { NavLink } from "react-router-dom";
@@ -19,22 +19,25 @@ function LoginPage() {
       >
         <p className="text-3xl mb-10">To do list</p>
 
-        <BasicTextFields label="name" setValue={setName}/>
+        <BasicTextFields label="name" setValue={setName} />
         <BasicTextFields label="familyname" setValue={setFamilyName} />
-        <BasicTextFields label="age" setValue={setAge}/>
+        <BasicTextFields label="age" setValue={setAge} />
         <p style={{ cursor: "pointer" }} className="underline mb-6 mt-1">
           Forgot password?
         </p>
-      
-        <BasicButtons label="Login" onClick={() => {
-          name.length !== 0 && familyname.length !== 0 && age == 10
-          dispatch(setUser({
-            name: "name",
-            familyname:"password",
-            age: "age"
-          })
-          );
-        }}
+
+        <BasicButtons
+          label="Login"
+          onClick={() => {
+            //name.length !== 0 && familyname.length !== 0 && age > 10 &&
+            dispatch(
+              setUser({
+                name: name,
+                familyname: familyname,
+                age: age,
+              })
+            );
+          }}
         />
         <p className="mt-3">
           You don't have an acount?{" "}
