@@ -2,22 +2,22 @@ import React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-function BasicTextFields({ label, value, setValue }) {
+function BasicTextFields({ label, value, setValue, width = "25ch" }) {
   return (
     <Box
       component="form"
       sx={{
-        "& > :not(style)": { m: 1, width: "40ch" },
+        "& > :not(style)": { m: 1, width: width },
       }}
       noValidate
-      autoComplete="on"
+      autoComplete="off"
     >
       <TextField
         id="outlined-basic"
         value={value}
         label={label}
         variant="outlined"
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(event) => setValue(event.target.value)}
       />
     </Box>
   );
