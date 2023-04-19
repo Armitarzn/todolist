@@ -5,7 +5,7 @@ import NavbarHome from "../Components/NavbarHome";
 
 function HomePage() {
   return (
-    <div className="flex-col w-full h-full">
+    <div className="flex-col w-full h-full fixed">
       <div className="p-3">
         <NavbarHome />
       </div>

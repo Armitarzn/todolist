@@ -10,22 +10,14 @@ function MainPage() {
 
   return (
     <div>
-      {userinfo.name !== "" ? (
+
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/homePage" element={<HomePage />} />
           </Routes>
         </BrowserRouter>
-      ) : (
-        <BrowserRouter>
-          <Routes>
-            <Route path="*" element={<NotFound />} />
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/login" element={<LoginPage />} />
-          </Routes>
-        </BrowserRouter>
-      )}
+     
     </div>
   );
 }
