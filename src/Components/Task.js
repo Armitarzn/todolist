@@ -3,12 +3,21 @@ import Checkbox from "@mui/material/Checkbox";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import BasicTextFields from "./BasicTextFields";
+import BasicButtons from "./BasicButton";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 
-function Task({task, edited, checked, handleDelete, handleChange, handleEdit}) {
-    const [editedTask, setTask] = useState("")
+function Task({task, 
+  edited, 
+  checked,
+  handleDelete,
+  handleChange,
+  handleEdit,
+  submitEdit,
+}) {
+    const [editedTask, setTask] = useState(task);
+
     return (
   <div
     className="max-h-32 flex justify-between border rounded m-2 p-4 overflow-hidden"
@@ -24,7 +33,15 @@ function Task({task, edited, checked, handleDelete, handleChange, handleEdit}) {
             setValue={setTask}
             width={"10inch"}
             />
+            <div className="flex w-1">
+            <BasicButtons
+              label="ok"
+              width={2}
+              onClick={() => submitEdit(editedTask)}
+            />
+          </div>
         </div>
+        
     ) : (
     
         <p

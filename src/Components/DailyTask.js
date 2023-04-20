@@ -13,7 +13,7 @@ function DailyTask() {
     setToDos([...toDos, { task: task, checked: false, edited: false }]);
     setTask("");
   };
-  const handleChange = (event, index) => {
+  const handleChange = (index) => {
     const newTodos = [...toDos];
     const [removed] = newTodos.splice(index, 1);
     removed.checked = !removed.checked;
@@ -30,7 +30,13 @@ function DailyTask() {
     const newTodos = [...toDos];
     newTodos[index].edited = !newTodos[index].edited;
     setToDos(newTodos);
-  }
+  };
+  const submitEdit = (index, editedTask) => {
+    const newTodos = [...toDos];
+    newTodos[index].task = editedTask;
+    newTodos[index].edited = false;
+    setToDos(newTodos);
+  };
   useEffect(() => {
     console.log(toDos);
   }, [toDos]);
@@ -44,6 +50,7 @@ function DailyTask() {
           <AddIcon
             className=" cursor-pointer"
             onClick={() => setWantsToAdd(true)}
+            
           />
         </div>
       </div>
@@ -55,12 +62,15 @@ function DailyTask() {
       )}
       {toDos.map((todo, index) => {
         return (
-          <Task task={todo.task}
-           checked={todo.checked}
-            handleDelete={() => handleDelete(index)} 
-            handleChange={(event) => handleChange(event, index)} 
-            edited={todo.edited} 
-            handleEdit={() => handleEdit(index)} />
+          <Task
+            task={todo.task}
+            checked={todo.checked}
+            handleDelete={() => handleDelete(index)}
+            handleChange={(event) => handleChange(event, index)}
+            edited={todo.edited}
+            handleEdit={() => handleEdit(index)}
+            submitEdit={(editedTask) => submitEdit(index, editedTask)}
+          />
         );
       })}
     </div>

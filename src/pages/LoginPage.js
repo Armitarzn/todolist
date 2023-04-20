@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+//import { NavLink } from "react-router-dom";
+import { setUser } from "../store/userinfo";
 import BasicButtons from "../Components/BasicButton";
 import BasicTextFields from "../Components/BasicTextFields";
-import  setUser  from "../store/userinfo";
+
 
 function LoginPage() {
   const [name, setName] = useState("");
@@ -11,7 +13,7 @@ function LoginPage() {
   const dispatch = useDispatch();
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-4xl mb-8">To Do List</h1>
+      <h1 className="text-4xl mb-10">ToDo List</h1>
       <div className="border-2 border-blue-500 p-12 rounded-3xl">
         <BasicTextFields label="name" value={name} setValue={setName} />
         <BasicTextFields
@@ -24,8 +26,7 @@ function LoginPage() {
           label="Start"
           // "Login"
           onClick={() => {
-            console.log("onclick")
-              name.length !== 0 &&
+            name.length !== 0 &&
               familyName.length !== 0 &&
               age > 10 &&
               dispatch(
