@@ -8,11 +8,12 @@ function Assignments() {
   const [task, setTask] = useState("");
   const [wantsToAdd, setWantsToAdd] = useState(false);
   const [toDos, setToDos] = useState([]);
-  const [description, setdescription] = useState("");
+  const [description, setDescription] = useState("")
 
   const handleSubmit = () => {
-    setToDos([...toDos, { task: task, checked: false }]);
+    task !== "" && setToDos([...toDos, { task: task, checked: false, edited: false, description: description }]);
     setTask("");
+    setDescription("")
   };
 
   const handleChange = (index) => {
@@ -64,7 +65,7 @@ function Assignments() {
           <BasicTextFields
             label="Description"
             value={description}
-            setValue={setdescription}
+            setValue={setDescription}
             width="30ch"
           />
           <BasicButtons
@@ -77,6 +78,7 @@ function Assignments() {
         return (
           <Task
             task={todo.task}
+            description={todo.description}
             checked={todo.checked}
             handleDelete={() => handleDelete(index)}
             handleChange={(event) => handleChange(event, index)}

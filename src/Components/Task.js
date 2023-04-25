@@ -7,33 +7,34 @@ import BasicButtons from "./BasicButton";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-
-function Task({task, 
-  edited, 
+function Task({
+  task,
+  edited,
   checked,
+  description,
   handleDelete,
   handleChange,
   handleEdit,
   submitEdit,
 }) {
-    const [editedTask, setTask] = useState(task);
+  const [editedTask, setTask] = useState(task);
 
-    return (
-  <div
-    className="max-h-32 flex justify-between border rounded m-2 p-4 overflow-hidden"
-    style={{
-      opacity:checked && 0.7,
-    }}
-  >
-    {edited ? (
+  return (
+    <div
+      className="max-h-32 flex justify-between border rounded m-2 p-4 overflow-hidden"
+      style={{
+        opacity: checked && 0.7,
+      }}
+    >
+      {edited ? (
         <div className="flex items-center">
-            <BasicTextFields 
+          <BasicTextFields
             label="Edit"
             value={editedTask}
             setValue={setTask}
             width={"10inch"}
-            />
-            <div className="flex w-1">
+          />
+          <div className="flex w-1">
             <BasicButtons
               label="ok"
               width={2}
@@ -41,32 +42,42 @@ function Task({task,
             />
           </div>
         </div>
-        
-    ) : (
-    
-        <p
-        style={{
-            textDecoration: checked && "line-through",
-        }}
-        >
-        {task}
-        </p>
-    )}
-    <div className="flex items-center">
-      <div onClick={handleEdit} className="mr-2">
-        <EditIcon />
-      </div>
-      <Checkbox
-        {...label}
-        checked={checked}
-        onChange={(event) => handleChange(event)}
-      />
-      <div onClick={handleDelete}>
-        <DeleteIcon className="cursor-pointer" />
+      ) : (
+        <div>
+          <p
+            style={{
+              textDecoration: checked && "line-through",
+            }}
+          >
+            {task}
+          </p>
+          <p
+            className="text-xs"
+            style={{
+              opacity: 0.5,
+            }}
+          >
+            {description}
+          </p>
+        </div>
+      )}
+      <div className="flex items-center">
+        <div onClick={handleEdit} className="mr-2">
+          <EditIcon className="cursor-pointer" />
+        </div>
+        {!edited && (
+          <Checkbox
+            {...label}
+            checked={checked}
+            onChange={(event) => handleChange(event)}
+          />
+        )}
+        <div onClick={handleDelete}>
+          <DeleteIcon className="cursor-pointer" />
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 }
 
 export default Task;

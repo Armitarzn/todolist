@@ -3,6 +3,7 @@ import AddIcon from "@mui/icons-material/Add";
 import BasicTextFields from "./BasicTextFields";
 import BasicButtons from "./BasicButton";
 import Task from "./Task";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 function DailyTask() {
   const [task, setTask] = useState("");
@@ -10,7 +11,8 @@ function DailyTask() {
   const [toDos, setToDos] = useState([]);
 
   const handleSubmit = () => {
-    setToDos([...toDos, { task: task, checked: false, edited: false }]);
+    task !== "" &&
+      setToDos([...toDos, { task: task, checked: false, edited: false }]);
     setTask("");
   };
   const handleChange = (index) => {
@@ -41,23 +43,33 @@ function DailyTask() {
     console.log(toDos);
   }, [toDos]);
 
-
   return (
     <div className="bg-orange-100 p-3 ">
       <div>
         <div className="flex justify-between">
-          <h1 className="font-bold text-xl">DailyTask</h1>
-          <AddIcon
-            className=" cursor-pointer"
-            onClick={() => setWantsToAdd(true)}
-            
-          />
+          <h1 className="font-bold text-xl">DailyTasks</h1>
+          {wantsToAdd ? (
+            <RemoveIcon
+              className=" cursor-pointer"
+              onClick={() => setWantsToAdd(false)}
+            />
+          ) : (
+            <AddIcon
+              className=" cursor-pointer"
+              onClick={() => setWantsToAdd(true)}
+            />
+          )}
         </div>
       </div>
       {wantsToAdd && (
         <div className="flex justify-center items-center">
-          <BasicTextFields label="Task" value={task} setValue={setTask} />
-          <BasicButtons label="add task" onClick={handleSubmit} />
+          <BasicTextFields label="Task" value={task} setValue={setTask} border-orange/>
+          <BasicButtons
+            label="add task"
+            onClick={handleSubmit}
+            color="orange"
+            
+          />
         </div>
       )}
       {toDos.map((todo, index) => {
