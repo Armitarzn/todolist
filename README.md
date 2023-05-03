@@ -4,10 +4,13 @@ This is a website suitable for all ages, and people who want to be more organize
 # Log in 
 Here we have a very basic log in page, you just have to write your name, family name and age to enter the page
 
+
 ![login](/pictures/Log%20in.png)
 
 # Home page
 By Logging in you will enter this page, The page is divided into two sections, one for _dailytasks_ and the other one for _assignments_. A submitted task has three functions - Edit, Check, Delete - either in _dailytasks_ or _assignments_.
+
+
 ![HomePage](/pictures/Picture1.jpg)
 
 ## Daily Task
