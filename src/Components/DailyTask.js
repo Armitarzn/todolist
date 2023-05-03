@@ -63,7 +63,7 @@ function DailyTask() {
       </div>
       {wantsToAdd && (
         <div className="flex justify-center items-center">
-          <BasicTextFields label="Task" value={task} setValue={setTask} border-orange/>
+          <BasicTextFields label="Task" value={task} focused={true} setValue={setTask} border-orange/>
           <BasicButtons
             label="add task"
             onClick={handleSubmit}

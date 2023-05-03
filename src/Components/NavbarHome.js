@@ -8,8 +8,8 @@ function Header() {
   return (
     <div className="flex h-28 bg-pink-100 justify-center align-middle ">
       {/* center  */}
-      <h1 className=" font-serif text-5xl mt-6">
-        {userinfo.name.toUpperCase()}'s todo list
+      <h1 className=" font-serif text-4xl mt-6 font-medium lg:text-5xl">
+        {userinfo.name.toUpperCase()}'s  todo  list
       </h1>
     </div>
   );

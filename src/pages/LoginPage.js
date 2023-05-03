@@ -13,7 +13,7 @@ function LoginPage() {
   const dispatch = useDispatch();
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-4xl mb-10">ToDo List</h1>
+      <h1 className="text-4xl mb-10">To Do List</h1>
       <div className="border-2 border-blue-500 p-12 rounded-3xl">
         <BasicTextFields label="name" value={name} setValue={setName} />
         <BasicTextFields
@@ -23,6 +23,8 @@ function LoginPage() {
         />
         <BasicTextFields label="age" value={age} setValue={setAge} />
         <BasicButtons
+          width="30ch"
+          className="flex items-center justify-center"
           label="Start"
           // "Login"
           onClick={() => {

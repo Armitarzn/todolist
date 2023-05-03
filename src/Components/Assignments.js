@@ -3,6 +3,7 @@ import AddIcon from "@mui/icons-material/Add";
 import BasicTextFields from "./BasicTextFields";
 import BasicButtons from "./BasicButton";
 import Task from "./Task";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 function Assignments() {
   const [task, setTask] = useState("");
@@ -48,19 +49,27 @@ function Assignments() {
       <div>
         <div className="flex justify-between">
           <h1 className="font-bold text-xl">Assignments</h1>
-          <AddIcon
-            className=" cursor-pointer"
-            onClick={() => setWantsToAdd(true)}
-          />
+          {wantsToAdd ? (
+            <RemoveIcon
+              className=" cursor-pointer"
+              onClick={() => setWantsToAdd(false)}
+            />
+          ) : (
+            <AddIcon
+              className=" cursor-pointer"
+              onClick={() => setWantsToAdd(true)}
+            />
+          )}
         </div>
       </div>
       {wantsToAdd && (
-        <div className="flex justify-center items-center">
+        <div className="lg:flex justify-center items-center flex-column lg:flex-row " >
           <BasicTextFields
             label="Task"
             value={task}
             setValue={setTask}
             width="20ch"
+            focused={true}
           />
           <BasicTextFields
             label="Description"
@@ -69,6 +78,7 @@ function Assignments() {
             width="30ch"
           />
           <BasicButtons
+            className="ml-4"
             label="add task"
             onClick={handleSubmit}
           />
