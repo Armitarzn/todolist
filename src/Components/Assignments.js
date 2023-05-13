@@ -17,13 +17,14 @@ function Assignments() {
     setDescription("")
   };
 
-  const handleChange = (index) => {
+  const handleChange = (event, index) => {
     const newTodos = [...toDos];
     const [removed] = newTodos.splice(index, 1);
     removed.checked = !removed.checked;
     removed.checked ? newTodos.push(removed) : newTodos.unshift(removed);
-    setToDos(newTodos);
+    setToDos(newTodos)
   };
+  
   const handleDelete = (index) => {
     const newTodos = [...toDos];
     newTodos.splice(index, 1);

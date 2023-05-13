@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import BasicTextFields from "./BasicTextFields";
 import BasicButtons from "./BasicButton";
@@ -15,13 +15,14 @@ function DailyTask() {
       setToDos([...toDos, { task: task, checked: false, edited: false }]);
     setTask("");
   };
-  const handleChange = (index) => {
+  const handleChange = (event, index) => {
     const newTodos = [...toDos];
     const [removed] = newTodos.splice(index, 1);
     removed.checked = !removed.checked;
     removed.checked ? newTodos.push(removed) : newTodos.unshift(removed);
-    setToDos(newTodos);
+    setToDos(newTodos)
   };
+
   const handleDelete = (index) => {
     const newTodos = [...toDos];
     newTodos.splice(index, 1);
@@ -39,9 +40,6 @@ function DailyTask() {
     newTodos[index].edited = false;
     setToDos(newTodos);
   };
-  useEffect(() => {
-    console.log(toDos);
-  }, [toDos]);
 
   return (
     <div className="bg-orange-100 p-3 ">
